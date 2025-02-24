@@ -49,7 +49,7 @@ int main() {
 
 
         if (strcmp(input, "exit") == 0) {
-            printf("Da thoat tro choi.\n");
+            printf("Da thoat tro choi. Hen gap lai !\n");
             break;
         }
 
