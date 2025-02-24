@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+int contains_tai(const char *str) {
+    return strstr(str, "tai") != NULL;
+}
+
+int contains_xiu(const char *str) {
+    return strstr(str, "xiu") != NULL;
+}
+
+void print_random_tai() {
+    const char *tai_results[] = {
+        "Xiuuuu! Chuc ban may man lan sau <3", "6,3 ra 1 ! Xiu.", "Ket qua la XIU. Chua tai dau.", "Cua duoi, xiu.", "Xiu win."
+    };
+    int size = sizeof(tai_results) / sizeof(tai_results[0]);
+    printf("%s\n", tai_results[rand() % size]);
+}
+
+
+void print_random_xiu() {
+    const char *xiu_results[] = {
+        "Taiiiii ! Tuoi l an tien nha cai nhe <3", "Tai. Tai loc qua lon", "Tai VIP.", "Tai max win."
+    };
+    int size = sizeof(xiu_results) / sizeof(xiu_results[0]);
+    printf("%s\n", xiu_results[rand() % size]);
+}
+
+void print_random_ask() {
+    const char *ask[] = {
+        "Tai hay Xiu ?", "Cuoc gi"
+        };
+    int size = sizeof(ask) / sizeof(ask[0]);
+    printf("%s\n", ask[rand() % size]);
+}
+
+int main() {
+    char input[100];
+    srand(time(NULL));
+     printf("Chao mung den voi nha cai Rauma36 ! Chung toi tu hao la nha cai uy tin nhat Chau A \nvoi 20 nam kinh nghiem soi keo, lua ga, lua dao ca do va hang ngan dich vu khac\ndam bao dem den cho quy khach mot trai nghiem choi game dang nho.\nNhap exit de thoat tro choi bat ki luc nao!\n");
+    do {
+        printf("Quy khach chon cuoc Tai hay Xiu?\n");
+        fgets(input, sizeof(input), stdin);
+
+
+        input[strcspn(input, "\n")] = 0;
+
+
+        if (strcmp(input, "exit") == 0) {
+            printf("Da thoat tro choi.\n");
+            break;
+        }
+
+        if (contains_tai(input)) {
+            print_random_tai();
+        } else if (contains_xiu(input)) {
+            print_random_xiu();
+        } else {
+            printf("Vui long cuoc \"tai\" hoac \"xiu\" !\n");
+        }
+    } while (1);
+
+    return 0;
+}
